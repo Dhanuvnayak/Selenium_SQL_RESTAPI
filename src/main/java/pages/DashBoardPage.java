@@ -3,16 +3,19 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class DashBoardPage extends BasePage {
+public class DashBoardPage{
     @FindBy(xpath = "//h1[text()='Dashboard']")
-    private WebElement dashboardHeader;
-
+    public WebElement dashboardHeader;
+WebDriver driver;
     public DashBoardPage(WebDriver driver) {
-        super(driver);
+
+        this.driver=driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public boolean isDashboardDisplayed() {
-        return dashboardHeader.isDisplayed();
+    public String isDashboardDisplayed() {
+        return driver.getTitle();
     }
 }
